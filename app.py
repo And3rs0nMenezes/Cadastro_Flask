@@ -38,12 +38,12 @@ def login():
       return redirect(url_for('login'))
     else:
       flash('Usuário ou senha incorretos.')
-    return redirect(url_for('index'))
+    return redirect(url_for('register'))
 
   if session.get('username'):
     return redirect(url_for('logged'))
   
-  return render_template('index.html')
+  return render_template('login.html')
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -60,7 +60,7 @@ def register():
     conn.close()
     
     flash('Usuário criado com sucesso!')
-    return redirect(url_for('index'))
+    return redirect(url_for('login'))
   return render_template('register.html')
 
 @app.route('/logged')
@@ -83,6 +83,54 @@ def init_db():
   conn.commit()
   conn.close()
 init_db()
+
+#cadastro de aluno
+alunos = []
+
+@app.route('/listar-alunos')
+def listar_alunos():
+  if not session.get("username"):
+    return redirect(url_for('login'))
+  return render_template('listar_alunos.html', alunos=alunos)
+
+@app.route('/adicionar-aluno', methods=['GET', 'POST'])
+def adicionar_aluno():
+    if not session.get("username"):
+      return redirect(url_for('login'))
+    
+    if request.method == 'POST':
+        matricula = request.form['matricula']
+        NomeAluno = request.form['NomeAluno']
+
+        aluno = {
+                'NomeAluno': NomeAluno,
+                'matricula': matricula
+        }
+        alunos.append(aluno)
+
+        return redirect(url_for('listar_alunos'))
+    return render_template('adicionar_alunos.html')
+
+@app.route('/editar-alunos/<int:id>', methods=['GET', 'POST'])
+def editar_aluno(id):
+    if not session.get("username"):
+      return redirect(url_for('login'))
+    aluno = alunos[id]
+
+    if request.method == 'POST':
+        aluno['NomeAluno'] = request.form['NomeAluno']
+        aluno['matricula'] = request.form['matricula']
+
+        return redirect(url_for('listar_alunos'))
+    return render_template('editar_alunos.html', id=id, aluno=aluno)
+
+@app.route('/excluir-aluno/<int:id>', methods=['POST'])
+def excluir_aluno(id):
+    if not session.get("username"):
+      return redirect(url_for('login'))
+    del alunos[id]
+    return redirect(url_for('listar_alunos'))
+
 
 if __name__ == "__main__":
     app.run(debug=True)
