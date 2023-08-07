@@ -4,8 +4,10 @@
 <head>
     <title>Frequência</title>
     <style>
-        *{margin: 0;
-            border: 0;}
+        * {
+            margin: 0;
+            border: 0;
+        }
     </style>
 </head>
 
@@ -22,14 +24,16 @@
             <th style="padding: 8px; text-align: left; border-bottom: 1px solid white;color: white;">Matrícula</th>
             <th style="padding: 8px; text-align: left; border-bottom: 1px solid white;color: white;">Ações</th>
             <th><button
-            style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
-            <a href="{{ url_for('adicionar_aluno') }}" style="text-decoration: none;color: white;">Adicionar
-                aluno</a></button></th>
+                    style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                    <a href="{{ url_for('adicionar_aluno') }}" style="text-decoration: none;color: white;">Adicionar
+                        aluno</a></button></th>
         </tr>
         {% for aluno in alunos %}
         <tr>
-            <td style="padding: 8px; text-align: left; border-bottom: 1px solid white;color: white;">{{ aluno.matricula }}</td>
-            <td style="padding: 8px; text-align: left; border-bottom: 1px solid white;color: white;">{{ aluno.NomeAluno }}</td>
+            <td style="padding: 8px; text-align: left; border-bottom: 1px solid white;color: white;">{{ aluno.matricula
+                }}</td>
+            <td style="padding: 8px; text-align: left; border-bottom: 1px solid white;color: white;">{{ aluno.NomeAluno
+                }}</td>
             <td style="padding: 8px; text-align: left; border-bottom: 1px solid white;color: white;">
                 <button
                     style="padding: 6px 12px; background-color: #295d8b; color: white; border: none; border-radius: 4px; cursor: pointer;"><a
@@ -43,11 +47,6 @@
         </tr>
         {% endfor %}
     </table>
-    <footer style="display:flex; text-align: center ;position: fixed; bottom: 0; background-color:#4CAF50; width: 100%; align-items: center;">
-        <h1 style="text-align: center; width: 100%;font-size: 15px;color: white">
-        Feito com 💙 por Anderson Menezes
-        </h1>
-    </footer>   
 </body>
 
 </html>

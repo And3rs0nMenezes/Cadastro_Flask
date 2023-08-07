@@ -17,12 +17,12 @@
 <body
     style="font-family: Arial, sans-serif; background-color: #f1f1f1; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
     <nav
-    style=" background-color: #4CAF50; height: 50px;width: 100vw; display: flex;position: fixed;top: 0 ; align-items: center;justify-content: space-between; padding: 0 20px; color:white;">
-    <h1
-    style="padding: 10px 20px; color: white; border: none; border-radius: 4px; cursor: pointer ;background-color:#4CAF50;">
-    <a href="/"  style="text-decoration: none; color: white;">Voltar</a>
-</h1>
-</nav>
+        style=" background-color: #4CAF50; height: 50px;width: 100vw; display: flex;position: fixed;top: 0 ; align-items: center;justify-content: space-between; padding: 0 20px; color:white;">
+        <h1
+            style="padding: 10px 20px; color: white; border: none; border-radius: 4px; cursor: pointer ;background-color:#4CAF50;">
+            <a href="/" style="text-decoration: none; color: white;">Voltar</a>
+        </h1>
+    </nav>
 
     <h1 style="font-size: 2.5rem; color: #333;">Login</h1>
     <form action="{{url_for('login')}}" method="post"
@@ -36,12 +36,6 @@
     </form>
     <p style="font-size: 1rem; color: #777; margin-top: 10px;">Não tem uma conta? <a href="{{url_for('register')}}"
             style="color: #4CAF50; text-decoration: none; margin-left: 5px;">Cadastre-se</a></p>
-    <footer
-        style="display:flex; text-align: center ;position: fixed; bottom: 0; background-color: #4CAF50; width: 100%; align-items: center;">
-        <h1 style="text-align: center; width: 100%;font-size: 15px; color: white;">
-            Feito com 💙 por Anderson Menezes
-        </h1>
-    </footer>
 </body>
 
 </html>
